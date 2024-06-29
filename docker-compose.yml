@@ -1,14 +1,12 @@
-version: '3.8'
-
 services:
   mysql:
-    container_name: mysql-bsn
+    container_name: mysql-tlms
     image: mysql:latest
     environment:
       MYSQL_USER: username
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: book_social_network
+      MYSQL_DATABASE: thuto
     volumes:
       - mysql:/var/lib/mysql
     ports:
