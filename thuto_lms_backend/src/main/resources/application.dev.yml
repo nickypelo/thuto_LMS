@@ -18,4 +18,4 @@ application:
   security:
     jwt:
       secret-key:
-      expiration:
+      expiration: 8640000
