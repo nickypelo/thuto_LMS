@@ -16,18 +16,20 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "role")
 @EntityListeners(AuditingEntityListener.class)
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Getter
     @Column(unique = true)
     private String name;
 
     @ManyToMany(mappedBy = "roles")
     @JsonIgnore
-    private List<Role> users;
+    private List<User> user;
 
     // track when user was created and last update
     @CreatedDate
@@ -37,7 +39,4 @@ public class Role {
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
 
-    public String getName() {
-        return name;
-    }
 }

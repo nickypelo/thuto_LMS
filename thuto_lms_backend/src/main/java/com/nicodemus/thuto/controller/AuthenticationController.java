@@ -2,6 +2,7 @@ package com.nicodemus.thuto.controller;
 
 import com.nicodemus.thuto.model.RegistrationRequest;
 import com.nicodemus.thuto.service.AuthenticationService;
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -20,7 +21,7 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<?> register(@RequestBody @Valid RegistrationRequest request){
+    public ResponseEntity<?> register(@RequestBody @Valid RegistrationRequest request) throws MessagingException {
         authenticationService.register(request);
         return ResponseEntity.accepted().build();
     }

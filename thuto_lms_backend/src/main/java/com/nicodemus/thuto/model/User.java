@@ -42,7 +42,6 @@ public class User implements UserDetails, Principal {
     @ManyToMany(fetch = FetchType.EAGER)
      private List<Role> roles;
 
-    // track when user was created and last update
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdDate;
@@ -94,8 +93,9 @@ public class User implements UserDetails, Principal {
         return enabled;
     }
 
-    private String fullName(){
+    public String getFullName(){
         return firstname + " " + lastname;
     }
 }
+
 
