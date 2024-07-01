@@ -1,4 +1,4 @@
-package com.nicodemus.thuto.model;
+package com.nicodemus.thuto.model.auth;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -11,19 +11,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class RegistrationRequest {
+public class AuthenticationRequest {
 
-    @NotEmpty(message = "Firstname is required.")
-    private String firstname;
-
-    @NotEmpty(message = "Lastname is required.")
-    private String lastname;
-
-    @Email(message = "Enter correct email format.")
     @NotEmpty(message = "Email is required.")
+    @NotBlank(message = "Email cannot be blank.")
+    @Email(message = "Enter correct email format.")
     private String email;
-
     @NotEmpty(message = "Password is required.")
+    @NotBlank(message = "Password cannot be blank.")
     @Size(min = 8, message = "Password should be a minimum of 8 characters")
     private String password;
 }

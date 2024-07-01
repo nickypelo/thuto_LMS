@@ -1,4 +1,4 @@
-package com.nicodemus.thuto.model;
+package com.nicodemus.thuto.model.auth;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,11 +1,14 @@
 package com.nicodemus.thuto.service;
 
 import com.nicodemus.thuto.model.*;
+import com.nicodemus.thuto.model.auth.AuthenticationRequest;
+import com.nicodemus.thuto.model.auth.AuthenticationResponse;
+import com.nicodemus.thuto.model.auth.RegistrationRequest;
+import com.nicodemus.thuto.model.auth.Token;
 import com.nicodemus.thuto.repository.RoleRepository;
 import com.nicodemus.thuto.repository.TokenRepository;
 import com.nicodemus.thuto.repository.UserRepository;
 import jakarta.mail.MessagingException;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;

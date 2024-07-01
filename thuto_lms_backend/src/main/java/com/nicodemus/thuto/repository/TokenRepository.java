@@ -1,6 +1,6 @@
 package com.nicodemus.thuto.repository;
 
-import com.nicodemus.thuto.model.Token;
+import com.nicodemus.thuto.model.auth.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

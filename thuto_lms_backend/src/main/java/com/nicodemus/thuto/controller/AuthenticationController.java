@@ -1,8 +1,8 @@
 package com.nicodemus.thuto.controller;
 
-import com.nicodemus.thuto.model.RegistrationRequest;
-import com.nicodemus.thuto.model.AuthenticationRequest;
-import com.nicodemus.thuto.model.AuthenticationResponse;
+import com.nicodemus.thuto.model.auth.RegistrationRequest;
+import com.nicodemus.thuto.model.auth.AuthenticationRequest;
+import com.nicodemus.thuto.model.auth.AuthenticationResponse;
 import com.nicodemus.thuto.service.AuthenticationService;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
