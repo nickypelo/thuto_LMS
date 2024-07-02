@@ -1,11 +1,13 @@
 package com.nicodemus.thuto.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "topic")
 public class Topic {
@@ -14,7 +16,9 @@ public class Topic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String topicName;
+
+    // relationships
     @ManyToOne
-    @JoinColumn(name = "topicList")
+    @JoinColumn(name = "subject_id")
     private Subject subject;
 }

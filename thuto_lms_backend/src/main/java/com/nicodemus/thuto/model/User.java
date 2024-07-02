@@ -1,5 +1,6 @@
 package com.nicodemus.thuto.model;
 
+import com.nicodemus.thuto.model.auth.Token;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -39,15 +40,20 @@ public class User implements UserDetails, Principal {
     private boolean accountLocked;
     private boolean enabled;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-     private List<Role> roles;
-
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdDate;
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
+
+    // relationships
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Subject> subjectList;
+
 
     // methods
     @Override
