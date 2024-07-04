@@ -2,7 +2,6 @@ package com.nicodemus.thuto.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.List;
 
@@ -13,7 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "subject")
-@EntityListeners(AuditingEntityListener.class)
 public class Subject {
 
     @Id
