@@ -1,1 +1,9 @@
-<p>learner works!</p>
+<div class="h-screen">
+    <app-header></app-header>
+    <main class="grid grid-cols-3 w-[800px] mx-auto gap-4" >
+        <div *ngFor="let subject of mySubjects" class="h-44 text-white bg-black">
+            <p>{{subject}}</p>
+        </div>
+        
+    </main>
+</div>

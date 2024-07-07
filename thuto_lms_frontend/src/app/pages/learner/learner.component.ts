@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class LearnerComponent {
 
+  mySubjects: String[] = ["Mathematics", "Life Skills", "English - First Additional Language",
+     "Economic Management Science", "Technology"
+    ]
+
 }
