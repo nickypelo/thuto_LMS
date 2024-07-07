@@ -5,7 +5,7 @@
             <app-navigation></app-navigation>
         </div>
         <div class="col-span-4 xss:col-span-3 bg-blue-100 p-4">
-            <app-grade></app-grade>
+            <router-outlet></router-outlet>
         </div>
   
     </div>
@@ -13,12 +13,24 @@
 <footer class="h-10v xss:hidden">
     <ul class="text-3xl pt-4 flex justify-between">
         <li class="hover:bg-slate-200 mb-4">
-            Icon<span class="hidden md:inline ml-4">Topics</span></li>
+            <button routerLink="/subject/topics" routerLinkActive="active">
+                Icon<span class="hidden md:inline ml-4">Topics</span>
+            </button>
+        </li>
         <li class="hover:bg-slate-200 mb-4">
-            Icon<span class="hidden md:inline ml-4">Quizzes</span></li>
+            <button routerLink="/subject/quizzes" routerLinkActive="active">
+                Icon<span class="hidden md:inline ml-4">Quizzes</span>
+            </button>
+        </li>
         <li class="hover:bg-slate-200 mb-4">
-            Icon<span class="hidden md:inline ml-4">Grades</span></li>
+            <button routerLink="/subject/grades" routerLinkActive="active">
+                Icon<span class="hidden md:inline ml-4">Grades</span>
+            </button>
+        </li>
         <li class="hover:bg-slate-200">
-            Icon<span class="hidden md:inline ml-4">Queries</span></li>
+            <button routerLink="/subject/1" routerLinkActive="active">
+                Icon<span class="hidden md:inline ml-4">Queries</span>
+            </button>
+        </li>
     </ul>
 </footer>
