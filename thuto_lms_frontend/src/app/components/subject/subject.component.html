@@ -10,26 +10,38 @@
   
     </div>
 </main>
-<footer class="h-10v xss:hidden">
-    <ul class="text-3xl pt-4 flex justify-between">
-        <li class="hover:bg-slate-200 mb-4">
-            <button routerLink="/subject/topics" routerLinkActive="active">
-                Icon<span class="hidden md:inline ml-4">Topics</span>
+<footer class="h-10v xss:hidden text-center">
+    <ul class="bg-blue-500 text-2xl flex">
+        <li class="w-1/4 p-2" routerLinkActive="active">
+            <button routerLink="/subject/topics">
+                <figure>
+                    <img src="../../../assets/teach.png" width="30" class="mx-auto" alt="">
+                    <figcaption class="text-sm text-white font-black">Topics</figcaption>
+                </figure>                
             </button>
         </li>
-        <li class="hover:bg-slate-200 mb-4">
-            <button routerLink="/subject/quizzes" routerLinkActive="active">
-                Icon<span class="hidden md:inline ml-4">Quizzes</span>
+        <li class="w-1/4 p-2" routerLinkActive="active">
+            <button routerLink="/subject/quizzes">
+                <figure>
+                    <img src="../../../assets/question.png" width="30" class="mx-auto" alt="">
+                    <figcaption class="text-sm text-white font-black">Quizzes</figcaption>
+                </figure> 
             </button>
         </li>
-        <li class="hover:bg-slate-200 mb-4">
-            <button routerLink="/subject/grades" routerLinkActive="active">
-                Icon<span class="hidden md:inline ml-4">Grades</span>
+        <li class="w-1/4 p-2" routerLinkActive="active">
+            <button routerLink="/subject/grades">
+                <figure>
+                    <img src="../../../assets/grade.png" width="30" class="mx-auto" alt="">
+                    <figcaption class="text-sm text-white font-black">Grades</figcaption>
+                </figure> 
             </button>
         </li>
-        <li class="hover:bg-slate-200">
-            <button routerLink="/subject/1" routerLinkActive="active">
-                Icon<span class="hidden md:inline ml-4">Queries</span>
+        <li class="w-1/4 p-2" routerLinkActive="active">
+            <button class="block w-full h-full" routerLink="/subject/1" >
+                <figure>
+                    <img src="../../../assets/query.png" width="30" class="mx-auto" alt="">
+                    <figcaption class="text-sm text-white font-black">Queries</figcaption>
+                </figure> 
             </button>
         </li>
     </ul>
