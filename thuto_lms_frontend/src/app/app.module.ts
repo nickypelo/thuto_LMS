@@ -15,6 +15,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { HeaderComponent } from './components/header/header.component';
 import { QuestionComponent } from './components/question/question.component';
 import { GradeComponent } from './components/grade/grade.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { GradeComponent } from './components/grade/grade.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
