@@ -22,6 +22,7 @@ public class SubjectService {
         if(user.getRoles().contains("student")){
             return 0;
         }
+
         return subjectRepository.save(request).getId();
     }
 

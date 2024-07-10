@@ -1,6 +1,6 @@
 package com.nicodemus.thuto.controller;
 
-import com.example.demo.model.Topic;
+import com.nicodemus.thuto.model.Topic;
 import com.nicodemus.thuto.service.TopicService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
 
 @RestController
 @RequestMapping("topics")

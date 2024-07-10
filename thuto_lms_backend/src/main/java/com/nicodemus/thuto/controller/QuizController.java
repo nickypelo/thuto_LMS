@@ -31,9 +31,11 @@ public class QuizController {
     }
 
     @GetMapping("/{student-id}")
-    public ResponseEntity<Optional<Quiz>> getQuizById(@PathVariable("student-id") Integer quiz_id){
-        Optional<Quiz> quiz = quizService.getQuizById(quiz_id);
-        return ResponseEntity.ok(quiz);
+    public ResponseEntity<Optional<Quiz>> getQuizById(
+            @PathVariable("student-id") Integer quiz_id,
+            Authentication connectedUser
+    ){
+        return ResponseEntity.ok(quizService.getQuizById(quiz_id, connectedUser));
     }
 
     @PutMapping("/update/{student-id}")

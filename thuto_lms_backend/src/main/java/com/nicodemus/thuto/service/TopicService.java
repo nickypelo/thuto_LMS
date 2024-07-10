@@ -1,8 +1,9 @@
 package com.nicodemus.thuto.service;
 
-import com.example.demo.model.Topic;
 import com.nicodemus.thuto.model.Subject;
+import com.nicodemus.thuto.model.Topic;
 import com.nicodemus.thuto.model.User;
+import com.nicodemus.thuto.repository.SubjectRepository;
 import com.nicodemus.thuto.repository.TopicRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class TopicService {
     private final TopicRepository topicRepository;
+    private final SubjectRepository subjectRepository;
 
     public Integer save(Topic request, Authentication connectedUser) {
         User user = ((User) connectedUser.getPrincipal());
@@ -23,6 +25,15 @@ public class TopicService {
         if(user.getRoles().contains("student")){
             return 0;
         }
+
+        if (request.getSubject() == null || request.getSubject().getId() == null) {
+            throw new IllegalArgumentException("Subject ID must be provided");
+        }
+
+        Optional<Subject> fromRequest = subjectRepository.findByName(request.getSubject().getSubjectName());
+        Subject subject = fromRequest.get();
+        request.setSubject(subject);
+
         return topicRepository.save(request).getId();
     }
 
@@ -51,7 +62,6 @@ public class TopicService {
     public Integer updatePDF(Topic myTopic) {
         Topic topic = topicOptionalMapper(myTopic);
 
-        topic.setTopicPDF(myTopic.getTopicPDF());
         return topicRepository.save(topic).getId();
     }
 

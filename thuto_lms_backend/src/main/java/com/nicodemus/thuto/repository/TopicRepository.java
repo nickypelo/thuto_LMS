@@ -1,6 +1,7 @@
 package com.nicodemus.thuto.repository;
 
-import com.example.demo.model.Topic;
+
+import com.nicodemus.thuto.model.Topic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
