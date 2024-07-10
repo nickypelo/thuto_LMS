@@ -1,37 +1,45 @@
 package com.nicodemus.thuto.controller;
 
-import com.nicodemus.thuto.service.response.SubjectResponse;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import com.nicodemus.thuto.model.Subject;
 import com.nicodemus.thuto.service.SubjectService;
-import com.nicodemus.thuto.service.records.SubjectRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("subject")
 @RequiredArgsConstructor
-@Tag(name = "Subject")
 public class SubjectController {
 
     private final SubjectService subjectService;
 
     @PostMapping
-    public ResponseEntity<Integer> setSubject(
-            @Valid @RequestBody SubjectRequest subjectRequest,
+    public ResponseEntity<Integer> addSubject(
+            @RequestBody Subject request,
             Authentication connectedUser
     ){
-        return ResponseEntity.ok(subjectService.save(subjectRequest, connectedUser));
+        return ResponseEntity.ok(subjectService.save(request, connectedUser));
     }
 
-    @GetMapping("{subject_id}")
-    public ResponseEntity<SubjectResponse> findSubjectById(
-            @PathVariable("subject_id") Integer subject_id
+    @GetMapping()
+    public ResponseEntity<List<Subject>> getAllSubjects(Authentication connectedUser){
+        return ResponseEntity.ok(subjectService.getAllSubjects(connectedUser));
+    }
+
+    @GetMapping("/{subject-id}")
+    public ResponseEntity<Optional<Subject>> getSubjectById(@PathVariable("subject-id") Integer subjectId){
+        return ResponseEntity.ok(subjectService.getSubjectById(subjectId));
+    }
+
+    @PutMapping("/name/{subject-id}")
+    public ResponseEntity<Integer> updateSubjectName(
+            @PathVariable Subject mySubject,
+            Authentication connectedUser
     ){
-        return ResponseEntity.ok(subjectService.findById(subject_id));
+        return ResponseEntity.ok(subjectService.updateSubjectName(mySubject, connectedUser));
     }
-
-
 }

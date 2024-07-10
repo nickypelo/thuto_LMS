@@ -1,4 +1,4 @@
-package com.nicodemus.thuto.model;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,17 +9,18 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "topic")
-public class Topic {
+@Table(name = "question")
+public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String topicName;
-    private String topicPdf;
+    private String questionName;
+    private String studentAnswer;
+    private String answer;
 
     // relationships
     @ManyToOne
-    @JoinColumn(name = "subject_id")
-    private Subject subject;
+    @JoinColumn(name = "quiz_id")
+    private Quiz quiz;
 }

@@ -1,5 +1,4 @@
-package com.nicodemus.thuto.model;
-
+package com.example.demo.model;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,7 +15,7 @@ public class Topic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String topicName;
-    private String topicPdf;
+    private String topicPDF;
 
     // relationships
     @ManyToOne
