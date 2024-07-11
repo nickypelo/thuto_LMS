@@ -48,12 +48,15 @@ public class User implements UserDetails, Principal {
     private LocalDateTime lastModifiedDate;
 
     // relationships
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Role> roles;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Subject> subjectList;
 
+    @OneToMany(mappedBy = "user")
+    private List<UserAnswer> answers;
 
     // methods
     @Override
@@ -63,10 +66,11 @@ public class User implements UserDetails, Principal {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles
-                .stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName()))
-                .collect(Collectors.toList());
+//        return this.roles
+//                .stream()
+//                .map(role -> new SimpleGrantedAuthority(role.getName()))
+//                .collect(Collectors.toList());
+        return null;
     }
 
     @Override

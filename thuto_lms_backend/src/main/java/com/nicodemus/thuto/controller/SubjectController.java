@@ -26,7 +26,7 @@ public class SubjectController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<Subject>> getAllSubjects(Authentication connectedUser){
+    public ResponseEntity<List<Subject>> getAllUserSubjects(Authentication connectedUser){
         return ResponseEntity.ok(subjectService.getAllSubjects(connectedUser));
     }
 

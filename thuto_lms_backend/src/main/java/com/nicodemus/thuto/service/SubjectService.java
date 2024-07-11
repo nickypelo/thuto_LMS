@@ -3,6 +3,7 @@ package com.nicodemus.thuto.service;
 import com.nicodemus.thuto.model.Subject;
 import com.nicodemus.thuto.model.User;
 import com.nicodemus.thuto.repository.SubjectRepository;
+import com.nicodemus.thuto.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -15,14 +16,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class SubjectService {
     private final SubjectRepository subjectRepository;
+    private final UserRepository userRepository;
 
     public Integer save(Subject request, Authentication connectedUser) {
         User user = ((User) connectedUser.getPrincipal());
 
-        if(user.getRoles().contains("student")){
+        if(user.getRole().getName().contains("student")){
             return 0;
         }
-
+        List<User> allUsers = userRepository.findAll();
+        request.setUserList(allUsers);
         return subjectRepository.save(request).getId();
     }
 
@@ -43,7 +46,7 @@ public class SubjectService {
     public Integer updateSubjectName(Subject mySubject, Authentication connectedUser) {
         User user = ((User) connectedUser.getPrincipal());
 
-        if(user.getRoles().contains("student")){
+        if(user.getRole().getName().contains("student")){
             return 0;
         }
 

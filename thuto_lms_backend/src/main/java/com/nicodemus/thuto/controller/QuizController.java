@@ -6,6 +6,7 @@ import com.nicodemus.thuto.service.QuizService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,22 +26,25 @@ public class QuizController {
         return ResponseEntity.ok(quizService.save(request, connectedUser));
     }
 
-    @GetMapping()
-    public ResponseEntity<List<Quiz>> getAllTopics(Authentication connectedUser){
-        return ResponseEntity.ok(quizService.getAllQuizzes( connectedUser));
+    @GetMapping("{subjectName}")
+    public ResponseEntity<List<Quiz>> getAllTopics
+            (@PathVariable("subjectName") String subjectName,
+             Authentication connectedUser
+            ){
+        return ResponseEntity.ok(quizService.getAllQuizzes(subjectName ,connectedUser));
     }
 
-    @GetMapping("/{student-id}")
+    @GetMapping("/{quiz-id}")
     public ResponseEntity<Optional<Quiz>> getQuizById(
-            @PathVariable("student-id") Integer quiz_id,
+            @PathVariable("quiz-id") Integer quiz_id,
             Authentication connectedUser
     ){
         return ResponseEntity.ok(quizService.getQuizById(quiz_id, connectedUser));
     }
 
-    @PutMapping("/update/{student-id}")
+    @PutMapping("/update/{quiz-id}")
     public ResponseEntity<Integer> updateQuizName(
-            @PathVariable("student-id") Quiz myQuiz,
+            @PathVariable("quiz-id") Quiz myQuiz,
             Authentication connectedUser
             ){
         return ResponseEntity.ok(quizService.updateQuizName(myQuiz, connectedUser));

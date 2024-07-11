@@ -22,7 +22,7 @@ public class TopicService {
     public Integer save(Topic request, Authentication connectedUser) {
         User user = ((User) connectedUser.getPrincipal());
 
-        if(user.getRoles().contains("student")){
+        if(user.getRole().getName().contains("student")){
             return 0;
         }
 
@@ -37,15 +37,10 @@ public class TopicService {
         return topicRepository.save(request).getId();
     }
 
-
-    public List<Topic> getAllTopics(Authentication connectedUser) {
+    public List<Topic> getAllTopics(String mySubject, Authentication connectedUser) {
         User user = ((User) connectedUser.getPrincipal());
 
-        return topicRepository.findAllById(
-                user.getSubjectList()
-                        .stream()
-                        .map(Subject::getId)
-                        .collect(Collectors.toList()));
+        return topicRepository.findAllBySubject(subjectRepository.findByName(mySubject).get()).get();
     }
 
     public Optional<Topic> getTopicById(Integer topicId) {
@@ -53,6 +48,12 @@ public class TopicService {
     }
 
     public Integer updateTopicName(Topic myTopic, Authentication connectedUser) {
+        User user = ((User) connectedUser.getPrincipal());
+
+        if (user.getRole().getName().contains("student")) {
+            throw new IllegalArgumentException("Student cannot edit this.");
+        }
+
         Topic topic = topicOptionalMapper(myTopic);
 
         topic.setTopicName(myTopic.getTopicName());

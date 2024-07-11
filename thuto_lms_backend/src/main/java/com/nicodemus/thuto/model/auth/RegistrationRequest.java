@@ -1,5 +1,6 @@
 package com.nicodemus.thuto.model.auth;
 
+import com.nicodemus.thuto.model.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -25,4 +26,7 @@ public class RegistrationRequest {
     @NotEmpty(message = "Password is required.")
     @Size(min = 8, message = "Password should be a minimum of 8 characters")
     private String password;
+
+    @NotEmpty(message = "Specify user role.")
+    private Role role;
 }

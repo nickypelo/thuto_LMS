@@ -25,9 +25,9 @@ public class TopicController {
         return ResponseEntity.ok(topicService.save(request, connectedUser));
     }
 
-    @GetMapping()
-    public ResponseEntity<List<Topic>> getAllTopics(Authentication connectedUser){
-        return ResponseEntity.ok(topicService.getAllTopics(connectedUser));
+    @GetMapping("/subject")
+    public ResponseEntity<List<Topic>> getAllTopics(@PathVariable("subject") String subject, Authentication connectedUser){
+        return ResponseEntity.ok(topicService.getAllTopics(subject ,connectedUser));
     }
 
     @GetMapping("/{topic-id}")

@@ -26,9 +26,8 @@ public class Role {
     private String name;
 
     // relationships
-    @ManyToMany(mappedBy = "roles")
-    @JsonIgnore
-    private List<User> user;
+    @OneToMany(mappedBy = "role")
+    private List<User> userList;
 
     // track when user was created and last update
     @CreatedDate

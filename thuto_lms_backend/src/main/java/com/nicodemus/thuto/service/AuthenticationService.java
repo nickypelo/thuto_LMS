@@ -6,6 +6,7 @@ import com.nicodemus.thuto.model.auth.AuthenticationResponse;
 import com.nicodemus.thuto.model.auth.RegistrationRequest;
 import com.nicodemus.thuto.model.auth.Token;
 import com.nicodemus.thuto.repository.RoleRepository;
+import com.nicodemus.thuto.repository.SubjectRepository;
 import com.nicodemus.thuto.repository.TokenRepository;
 import com.nicodemus.thuto.repository.UserRepository;
 import jakarta.mail.MessagingException;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -33,14 +34,14 @@ public class AuthenticationService {
     private final EmailService emailService;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+    private final SubjectRepository subjectRepository;
 
     @Value("@${application.mailing.frontend.activation-url}")
     private String activationUrl;
 
     public void register(RegistrationRequest request) throws MessagingException {
-        var userRole = roleRepository.findByName("USER")
-                .orElseThrow(() -> new IllegalStateException("ROLE USER was not initialized."));
-
+        roleRepository.save(request.getRole());
+        Optional<Role> userRole = roleRepository.findByName(request.getRole().getName());
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
@@ -48,7 +49,8 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode((request.getPassword())))
                 .accountLocked(false)
                 .enabled(false)
-                .roles(List.of(userRole))
+                .role(userRole.get())
+                .subjectList(subjectRepository.findAll())
                 .build();
 
         userRepository.save(user);

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -26,7 +25,7 @@ public class QuizService {
     public Integer save(Quiz request, Authentication connectedUser) {
         User user = ((User) connectedUser.getPrincipal());
 
-        if (user.getRoles().contains("student")) {
+        if (user.getRole().getName().contains("student")) {
             return 0;
         }
         if (request.getSubject() == null || request.getSubject().getId() == null) {
@@ -49,20 +48,21 @@ public class QuizService {
 
     }
 
-    public List<Quiz> getAllQuizzes(Authentication connectedUser) {
+    public List<Quiz> getAllQuizzes(String subjectName, Authentication connectedUser) {
         User user = ((User) connectedUser.getPrincipal());
 
         if (user == null) {
             throw new IllegalArgumentException("User does not exist!");
         }
 
-        return quizRepository.findAll();
+        Optional<Subject> subjectOptional = subjectRepository.findByName(subjectName);
+        return (quizRepository.findAllBySubject(subjectOptional.get())).get();
     }
 
     public Optional<Quiz> getQuizById(Integer quizId, Authentication connectedUser) {
         User user = ((User) connectedUser.getPrincipal());
 
-        if (user.getRoles().contains("student")) {
+        if (user.getRole().getName().contains("student")) {
             throw new IllegalArgumentException("Student cannot edit this.");
         }
 
@@ -71,6 +71,18 @@ public class QuizService {
     }
 
     public Integer updateQuizName(Quiz myQuiz, Authentication connectedUser) {
-        return null;
+        User user = ((User) connectedUser.getPrincipal());
+
+        if (user == null) {
+            throw new IllegalArgumentException("User does not exist!");
+        }
+        if (user.getRole().getName().contains("student")) {
+            throw new IllegalArgumentException("You are not allowed to change anything.");
+        }
+        Optional<Quiz> quizOptional = quizRepository.findById(myQuiz.getId());
+        Quiz quiz = quizOptional.get();
+        quiz.setQuizName(myQuiz.getQuizName());
+
+        return quizRepository.save(quiz).getId();
     }
 }
