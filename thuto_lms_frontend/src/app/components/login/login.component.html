@@ -1,24 +1,28 @@
-<div class="bg-myColor p-4 rounded-2xl">
-    <form>
-        <fieldset class="border p-4 ">
-            <legend class="font-black">Sign in</legend>
-            <div class="mb-4">
-                <label for="email">Email</label>
-                <input class="block p-2 w-full" type="email">
-            </div>
-            <div class="mb-4">
-                <label for="email">Password</label>
-                <input type="password" class="block p-2 w-full" >
-            </div>
-            <div class="mb-4">
-                <button class="w-fit py-2 px-4 hover:bg-red-500 hover:text-white bg-white" (click)="submit($event)">Sign In</button>
-            </div>
-        </fieldset>
-        
-    </form>
-    <div class="mt-4">
-        <button class="w-fit py-2 px-4 hover:bg-red-500 hover:text-white bg-white">Forgot Password?</button>
+<div class="h-[95vh] p-4 grid  place-items-center">
+    <div class="w-full max-w-[400px]">
+        <div class="mb-4 text-4xl text-center h-[226px] bg-myColor text-white font-bold flex justify-center items-center">
+            <h1>THUTO</h1>
+        </div>
+        <form class="">
+            <fieldset class="border-2 p-4 border-myColor ">
+                <legend class="font-black w-full">Sign in</legend>
+                <div class="mb-4">
+                    <input class="block p-2 w-full outline-none" type="email" placeholder="Email">
+                </div>
+                <div class="mb-4">
+                    <input type="password" class="block p-2 w-full outline-none" placeholder="Password">
+                </div>
+                <div class="mb-4">
+                    <button class="bg-myColor w-fit py-2 px-4 hover:bg-red-500 hover:text-white" (click)="submit($event)">Sign In</button>
+                </div>
+            </fieldset>
+            
+        </form>
+            <div class="mt-4">
+        <button class="w-fit py-2 px-4 bg-red-500 text-white hover:bg-myColor">Forgot Password?</button>
     </div>
 
-    <button routerLink="/learner" >hey</button>
+    <!-- <button routerLink="/learner" >hey</button> -->
+    </div>
+
 </div>

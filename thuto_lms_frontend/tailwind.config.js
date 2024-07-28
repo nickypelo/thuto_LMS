@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'myColor': '#1994a7'
+        'myColor': '#1994a7',
       },
       height:{
         '10v' : '10vh',
@@ -15,6 +15,9 @@ module.exports = {
       },
       screens: {
         'xss': '480px'
+      },
+      backgroundImage:{
+        "front": "url('src/assets/myblue.jpg')"
       }
     },
   },
