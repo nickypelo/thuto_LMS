@@ -1,49 +1,48 @@
 <app-header></app-header>
-<main class="">
-    <div class="h-80v xss:h-90v max-w-primary grid grid-cols-4 mx-auto overflow-y-scroll">
+<main class="relative">
+    <div class="h-90v  max-w-primary grid grid-cols-4 mx-auto overflow-y-scroll">
         <div class="hidden xss:block xss:col-span-1 pt-4">
             <app-navigation></app-navigation>
         </div>
         <div class="col-span-4 xss:col-span-3 bg-blue-100 p-4">
             <router-outlet></router-outlet>
         </div>
-  
     </div>
+    <footer class=" xss:hidden text-center fixed w-full bottom-0">
+        <ul class="bg-blue-500 text-2xl flex">
+            <li class="w-1/4 p-2" routerLinkActive="active">
+                <button routerLink="/subject/topics">
+                    <figure>
+                        <img src="../../../assets/teach.png" width="30" class="mx-auto" alt="">
+                        <figcaption class="text-sm text-white font-black">Topics</figcaption>
+                    </figure>                
+                </button>
+            </li>
+            <li class="w-1/4 p-2" routerLinkActive="active">
+                <button routerLink="/subject/quizzes">
+                    <figure>
+                        <img src="../../../assets/question.png" width="30" class="mx-auto" alt="">
+                        <figcaption class="text-sm text-white font-black">Quizzes</figcaption>
+                    </figure> 
+                </button>
+            </li>
+            <li class="w-1/4 p-2" routerLinkActive="active">
+                <button routerLink="/subject/grades">
+                    <figure>
+                        <img src="../../../assets/grade.png" width="30" class="mx-auto" alt="">
+                        <figcaption class="text-sm text-white font-black">Grades</figcaption>
+                    </figure> 
+                </button>
+            </li>
+            <li class="w-1/4 p-2" routerLinkActive="active">
+                <button class="block w-full h-full" routerLink="/subject/1" >
+                    <figure>
+                        <img src="../../../assets/query.png" width="30" class="mx-auto" alt="">
+                        <figcaption class="text-sm text-white font-black">Queries</figcaption>
+                    </figure> 
+                </button>
+            </li>
+        </ul>
+    </footer>
 </main>
 
-<footer class="h-10v xss:hidden text-center">
-    <ul class="bg-blue-500 text-2xl flex">
-        <li class="w-1/4 p-2" routerLinkActive="active">
-            <button routerLink="/subject/topics">
-                <figure>
-                    <img src="../../../assets/teach.png" width="30" class="mx-auto" alt="">
-                    <figcaption class="text-sm text-white font-black">Topics</figcaption>
-                </figure>                
-            </button>
-        </li>
-        <li class="w-1/4 p-2" routerLinkActive="active">
-            <button routerLink="/subject/quizzes">
-                <figure>
-                    <img src="../../../assets/question.png" width="30" class="mx-auto" alt="">
-                    <figcaption class="text-sm text-white font-black">Quizzes</figcaption>
-                </figure> 
-            </button>
-        </li>
-        <li class="w-1/4 p-2" routerLinkActive="active">
-            <button routerLink="/subject/grades">
-                <figure>
-                    <img src="../../../assets/grade.png" width="30" class="mx-auto" alt="">
-                    <figcaption class="text-sm text-white font-black">Grades</figcaption>
-                </figure> 
-            </button>
-        </li>
-        <li class="w-1/4 p-2" routerLinkActive="active">
-            <button class="block w-full h-full" routerLink="/subject/1" >
-                <figure>
-                    <img src="../../../assets/query.png" width="30" class="mx-auto" alt="">
-                    <figcaption class="text-sm text-white font-black">Queries</figcaption>
-                </figure> 
-            </button>
-        </li>
-    </ul>
-</footer>
