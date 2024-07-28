@@ -1,1 +1,55 @@
-<p>teacher works!</p>
+<main class="h-screen relative bg-black ">
+    <div class="bg-red-500 fixed h-screen w-full sm:max-w-[300px] max-w-[80px] ">
+        <!-- teacher navigation -->
+        <div class="mb-4 sm:text-4xl text-center h-[150px] bg-myColor text-white font-bold flex justify-center items-center">
+            <h1>THUTO</h1>
+        </div>
+        <nav class="p-4">
+            <ul class="text-lg pt-4">
+                <li class="hover:bg-slate-200 mb-4 p-2" routerLink="/teacher/class-topics" routerLinkActive="active">
+                    <a  class="">
+                        <img src="../../../assets/teach-black.png" width="40" class="inline" >
+                        <span class="hidden md:inline ml-4">Class Topics</span>
+                    </a>
+                </li>
+                <li class="hover:bg-slate-200 p-2 mb-4" routerLink="/teacher/class-quizzes" routerLinkActive="active">
+                    <a  >
+                        <img src="../../../assets/question-black.png" width="40" class="inline" alt="">
+                        <span class="hidden md:inline ml-4">Class Quizzes</span>
+                    </a>
+                </li>
+                <li class="hover:bg-slate-200 p-2 mb-4" routerLink="/teacher/class-grades" routerLinkActive="active">
+                    <a  >
+                        <img src="../../../assets/grade-black.png" width="40" class="inline" alt="">
+                        <span class="hidden md:inline ml-4">Class Grades</span>
+                    </a>
+                </li>
+                <li class="hover:bg-slate-200 p-2" routerLink="/teacher/students"  routerLinkActive="active">
+                    <a >
+                        <img src="../../../assets/query-black.png" width="40" class="inline" alt="">
+                        <span class="hidden md:inline ml-4">Learners</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class=" h-screen ">
+        <header class="bg-blue-100 p-4">
+            <div class="max-w-primary mx-auto">
+                <div class="flex justify-end">
+                    <a routerLink="/login">
+                        Log Off
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="p-8">
+            <div class="max-w-third text-right text-white sm:ml-[300px] ml-[80px]">
+                <h1 class="text-4xl mb-4">Teacher's Workspace</h1>
+                <div class="">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
