@@ -10,7 +10,7 @@ module.exports = {
       },
       height:{
         '10v' : '10vh',
-        '80v' : '80vh',
+        '80v' : '79vh',
         '90v' : '90vh'
       },
       screens: {
@@ -18,6 +18,10 @@ module.exports = {
       },
       backgroundImage:{
         "front": "url('src/assets/myblue.jpg')"
+      },
+      maxWidth: {
+        "primary": "1140px",
+        "secondary": "786px"
       }
     },
   },
