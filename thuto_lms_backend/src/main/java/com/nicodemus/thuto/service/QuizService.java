@@ -32,7 +32,7 @@ public class QuizService {
             throw new IllegalArgumentException("Subject ID must be provided");
         }
 
-        Subject subject = subjectRepository.findByName(request.getSubject().getSubjectName())
+        Subject subject = subjectRepository.findBySubjectName(request.getSubject().getSubjectName())
                 .orElseThrow(() -> new IllegalArgumentException("Subject not found"));
 
         request.setSubject(subject);
@@ -55,7 +55,7 @@ public class QuizService {
             throw new IllegalArgumentException("User does not exist!");
         }
 
-        Optional<Subject> subjectOptional = subjectRepository.findByName(subjectName);
+        Optional<Subject> subjectOptional = subjectRepository.findBySubjectName(subjectName);
         return (quizRepository.findAllBySubject(subjectOptional.get())).get();
     }
 

@@ -27,6 +27,6 @@ public class Question {
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "question")
     private List<UserAnswer> answers;
 }

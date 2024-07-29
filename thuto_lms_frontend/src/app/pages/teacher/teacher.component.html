@@ -1,5 +1,5 @@
-<main class="h-screen relative bg-black ">
-    <div class="bg-red-500 fixed h-screen w-full sm:max-w-[300px] max-w-[80px] ">
+<main class="h-screen relative">
+    <div class="fixed border-r-2 h-screen w-full sm:max-w-[300px] max-w-[80px] ">
         <!-- teacher navigation -->
         <div class="mb-4 sm:text-4xl text-center h-[150px] bg-myColor text-white font-bold flex justify-center items-center">
             <h1>THUTO</h1>
@@ -43,9 +43,9 @@
                 </div>
             </div>
         </header>
-        <div class="p-8">
-            <div class="max-w-third text-right text-white sm:ml-[300px] ml-[80px]">
-                <h1 class="text-4xl mb-4">Teacher's Workspace</h1>
+        <div class="p-8" style="height: calc(100vh - 56px);">
+            <div class="max-w-third text-right sm:ml-[300px] ml-[80px]">
+                <h1 class="text-xl sm:text-4xl mb-4">Teacher's Workspace</h1>
                 <div class="">
                     <router-outlet></router-outlet>
                 </div>

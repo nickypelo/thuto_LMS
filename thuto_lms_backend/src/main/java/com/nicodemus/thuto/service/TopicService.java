@@ -30,7 +30,7 @@ public class TopicService {
             throw new IllegalArgumentException("Subject ID must be provided");
         }
 
-        Optional<Subject> fromRequest = subjectRepository.findByName(request.getSubject().getSubjectName());
+        Optional<Subject> fromRequest = subjectRepository.findBySubjectName(request.getSubject().getSubjectName());
         Subject subject = fromRequest.get();
         request.setSubject(subject);
 
@@ -40,7 +40,7 @@ public class TopicService {
     public List<Topic> getAllTopics(String mySubject, Authentication connectedUser) {
         User user = ((User) connectedUser.getPrincipal());
 
-        return topicRepository.findAllBySubject(subjectRepository.findByName(mySubject).get()).get();
+        return topicRepository.findAllBySubject(subjectRepository.findBySubjectName(mySubject).get()).get();
     }
 
     public Optional<Topic> getTopicById(Integer topicId) {

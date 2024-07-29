@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface QuizRepository extends JpaRepository<Quiz, Integer> {
-    Optional<Quiz> findByName(String quizName);
+    Optional<Quiz> findByQuizName(String quizName);
     Optional<List<Quiz>> findAllBySubject(Subject subject);
 
 }

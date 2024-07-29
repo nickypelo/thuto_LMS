@@ -27,6 +27,5 @@ public class RegistrationRequest {
     @Size(min = 8, message = "Password should be a minimum of 8 characters")
     private String password;
 
-    @NotEmpty(message = "Specify user role.")
     private Role role;
 }
